@@ -3,7 +3,7 @@ node{
 	
     stage('SCM Checkout'){
         //git 'https://github.com/javahometech/my-app'
-        git 'https://github.com/jyotirmoysha/spring-boot-demo.git'
+        git 'https://github.com/jyotirmoysha/spring-boot-demo-docker.git'
     }
     stage('MVN Package'){
 
@@ -28,8 +28,8 @@ node{
         cd /home/ec2-user/test/target
         ls -lstr
         sh SampleSript.sh
-        java -jar /home/ec2-user/test/target/com.spring-boot.demo-0.0.1-SNAPSHOT.jar
-        sh SampleSript.sh
+        java -jar /home/ec2-user/test/target/com.spring-boot.demo.docker-0.0.1-SNAPSHOT.jar & echo $! > ./pid.file &
+        
         ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.jar,**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
     }
 	 
