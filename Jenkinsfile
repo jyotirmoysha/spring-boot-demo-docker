@@ -10,7 +10,7 @@ node{
         def mvnHome = tool name: 'Maven', type: 'maven'
 		def mvnCMD = "${mvnHome}/bin/mvn"
 		
-        sh "${mvnCMD} clean package"
+        sh "${mvnCMD} package"
     }
     stage('copy file to remote server'){
 		//sh 'sudo docker build -t jyotirmoydoc/testrepo:2.0.0 .'
